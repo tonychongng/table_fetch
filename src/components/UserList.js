@@ -1,8 +1,6 @@
 import React from 'react'
 
-export const UserList = ({users}) => {
-
-    
+export const UserList = ({users, showColors}) => {
 
   return (
     <div className='main'>
@@ -19,15 +17,21 @@ export const UserList = ({users}) => {
 
             <tbody>
                 {
-                  users.map(user=>(
-                    <tr key={user.login.uuid} className='personas'>
+                  users.map((user,index)=>{
+                    const backgroundColor = index % 2 === 0 ? '#333' : '#555';
+                    const color = showColors ? backgroundColor : "transparent";
+                    console.log(color);
+                    return (
+                      <tr key={user.login.uuid} className='personas' style={{backgroundColor:color}}>
                         <td><img src={user.picture.thumbnail}/></td>
                         <td>{user.name.first}</td>
                         <td>{user.name.last}</td>
                         <td>{user.location.country}</td>
                         <td><button>Borrar</button></td>
-                    </tr>
-                  ))
+                      </tr>
+                    )
+                  }
+                  )
                 }
             </tbody>
         </table>
