@@ -7,8 +7,14 @@ function App() {
 
   const [showColors, setShowColors] = useState(false);
 
+  const [sortByCountry, setSortByCountry] = useState(false);
+
   const toggleColors = () => {
     setShowColors(!showColors);
+  }
+ 
+  const toggleSortByCountry = () => {
+    setSortByCountry(prev => !prev);
   }
 
   useEffect(() => {
@@ -19,16 +25,25 @@ function App() {
       })
   }, [])
 
+  const sortedUsers = sortByCountry 
+  ? users.toSorted((a, b) => {
+    return a.location.country.localeCompare(b.location.country);
+  }) 
+  : users
+
   return (
     <div className="App">
       <h1>Table Coding Test</h1>
 
       <header>
         <button onClick={toggleColors}>Color Rows</button>
+        <button onClick={toggleSortByCountry}>
+          {sortByCountry ? "Don't order" : "Order By Country"}
+        </button>
       </header>
 
       <UserList
-        users={users}
+        users={sortedUsers}
         showColors={showColors}
       />
 

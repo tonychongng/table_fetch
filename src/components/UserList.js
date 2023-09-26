@@ -20,7 +20,7 @@ export const UserList = ({users, showColors}) => {
                   users.map((user,index)=>{
                     const backgroundColor = index % 2 === 0 ? '#333' : '#555';
                     const color = showColors ? backgroundColor : "transparent";
-                    console.log(color);
+                    
                     return (
                       <tr key={user.login.uuid} className='personas' style={{backgroundColor:color}}>
                         <td><img src={user.picture.thumbnail}/></td>

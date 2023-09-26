@@ -15,6 +15,20 @@ code {
     monospace;
 }
 
+.App header{
+  text-align: center;
+}
+
+.App header button {
+  background-color: #232323;
+  border: none;
+  padding: 8px;
+  color: white;
+  border-radius: 5px;
+  margin: 5px 10px;
+  cursor: pointer;
+}
+
 .App h1{
   text-align: center;
 }
