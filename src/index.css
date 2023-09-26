@@ -19,7 +19,8 @@ code {
   text-align: center;
 }
 
-.App header button {
+.App header button,
+.delete-user {
   background-color: #232323;
   border: none;
   padding: 8px;

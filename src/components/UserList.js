@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserList = ({users, showColors}) => {
+export const UserList = ({users, showColors, handleDelete}) => {
 
   return (
     <div className='main'>
@@ -27,7 +27,7 @@ export const UserList = ({users, showColors}) => {
                         <td>{user.name.first}</td>
                         <td>{user.name.last}</td>
                         <td>{user.location.country}</td>
-                        <td><button>Borrar</button></td>
+                        <td><button className='delete-user' onClick={() => {handleDelete(user.login.uuid)}}>Delete</button></td>
                       </tr>
                     )
                   }
