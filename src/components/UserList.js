@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserList = ({users, showColors, handleDelete}) => {
+export const UserList = ({users, showColors, handleDelete }) => {
 
   return (
     <div className='main'>
@@ -23,7 +23,7 @@ export const UserList = ({users, showColors, handleDelete}) => {
                     
                     return (
                       <tr key={user.login.uuid} className='personas' style={{backgroundColor:color}}>
-                        <td><img src={user.picture.thumbnail}/></td>
+                        <td><img src={user.picture.thumbnail} alt='imagen'/></td>
                         <td>{user.name.first}</td>
                         <td>{user.name.last}</td>
                         <td>{user.location.country}</td>
