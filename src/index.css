@@ -20,7 +20,8 @@ code {
 }
 
 .App header button,
-.delete-user {
+.delete-user,
+.App header input {
   background-color: #232323;
   border: none;
   padding: 8px;
