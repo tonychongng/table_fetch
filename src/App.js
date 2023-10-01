@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import { UserList } from "./components/UserList";
 
 function App() {
@@ -29,18 +29,24 @@ function App() {
         originalUsers.current = res.results
       })
   }, [])
-
   
 
-  const filteredUsers = typeof filterCountry === 'string' && filterCountry.length > 0
+  const filteredUsers = useMemo(() => {
+    return typeof filterCountry === 'string' && filterCountry.length > 0
     ? users.filter((user) => {
       return user.location.country.toLowerCase().includes(filterCountry.toLowerCase())
     })
     : users
 
-  const sortedUsers = sortByCountry 
-  ? filteredUsers.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
-  : filteredUsers
+  }, [users, filterCountry])
+  
+  
+
+  const sortedUsers = useMemo(() => {
+    return sortByCountry 
+    ? filteredUsers.toSorted((a, b) => a.location.country.localeCompare(b.location.country))
+    : filteredUsers
+  }, [filteredUsers, sortByCountry])
 
   const handleDelete = (uuid) => {
     const filteredUsers = users.filter((user) => user.login.uuid !== uuid)
